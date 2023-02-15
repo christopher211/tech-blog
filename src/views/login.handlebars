@@ -1,0 +1,50 @@
+<section class='container mt-5'>
+
+  <div class='border border-3 border-dark my-2'>
+    <div class='card-header'>
+      <h2>
+        Log in
+      </h2>
+    </div>
+
+    <div class='p-3'>
+      <!-- Login form with bootstrap -->
+      <form id='login-form'>
+        <div class='mb-3'>
+          <label for='login-username' class='form-label'>Username</label>
+          <input
+            type='text'
+            class='form-control'
+            name='login-username'
+            id='login-username'
+            required
+          />
+        </div>
+        <div class='mb-3'>
+          <label for='login-password' class='form-label'>Password</label>
+          <input
+            type='password'
+            class='form-control'
+            name='login-password'
+            id='login-password'
+            required
+          />
+        </div>
+        <div class='mb-3 d-flex justify-content-space align-items-center w-100'>
+          <button
+            type='submit'
+            id='login-button'
+            class='btn btn-sm btn-dark'
+          >Login</button>
+
+          <a href='/account/signup' class='ms-3'>Don't have an account? Sign Up</a>
+        </div>
+        <div class='mb-3'>
+          <p id='login-status'></p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script src='/js/login.js'></script>

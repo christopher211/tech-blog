@@ -1,0 +1,68 @@
+<section class='container mt-5'>
+
+  <div class='border border-3 border-dark my-2'>
+    <div class='card-header'>
+      <h2>
+        Sign up
+      </h2>
+    </div>
+
+    <div class='p-3'>
+      <form id='signup-form'>
+        <div class='mb-3'>
+          <label for='signup-name' class='form-label'>Name</label>
+          <input
+            type='text'
+            class='form-control'
+            name='signup-name'
+            id='signup-name'
+            required
+          />
+        </div>
+        <div class='mb-3'>
+          <label for='signup-username' class='form-label'>Username</label>
+          <input
+            type='text'
+            class='form-control'
+            name='signup-username'
+            id='signup-username'
+            required
+          />
+        </div>
+        <div class='mb-3'>
+          <label for='signup-email' class='form-label'>Email</label>
+          <input
+            type='email'
+            class='form-control'
+            name='signup-email'
+            id='signup-email'
+            required
+          />
+        </div>
+        <div class='mb-3'>
+          <label for='signup-password' class='form-label'>Password</label>
+          <input
+            type='password'
+            class='form-control'
+            name='signup-password'
+            id='signup-password'
+            required
+          />
+        </div>
+        <div class='mb-3 d-flex justify-content-space align-items-center w-100'>
+          <button
+            type='submit'
+            id='signup-button'
+            class='btn btn-sm btn-dark'
+          >Sign up</button>
+
+          <a href='/account/login' class='ms-3'>Already have an account? Log in</a>
+        </div>
+        <div class='mb-3'>
+          <p id='signup-status'></p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+<script src='/js/signup.js'></script>

@@ -1,0 +1,116 @@
+<div class='border border-3 border-dark my-2'>
+  <div class='blog-header'>
+    <h2>
+      {{title}}
+    </h2>
+
+    <span class=''>Posted by
+      {{user.name}}
+      on
+      {{format_date createdAt}}</span>
+
+  </div>
+  <div class='p-3'>
+    <span class=''>
+      {{content}}
+    </span>
+  </div>
+</div>
+
+<div>
+  <h2>Comments</h2>
+  {{#each comments as |comment|}}
+    <div class='border border-3 border-dark my-2'>
+      <div class='comment-header'>
+        <h4>
+
+          {{comment.user.name}}
+        </h4>
+
+        <span class=''>Created at
+          {{format_date comment.createdAt}}
+        </span>
+      </div>
+
+      <div class='p-3'>
+        <span class=''>
+          {{comment.content}}
+        </span>
+      </div>
+    </div>
+  {{/each}}
+
+  <div class='fixed-bottom'>
+    <button
+      class='btn btn-dark btn-lg'
+      type='button'
+      data-bs-toggle='modal'
+      data-bs-target='#addCommentModal'
+    >
+      <i class='fas fa-plus'></i>
+      Add Comment
+    </button>
+  </div>
+
+  <div
+    class='modal fade'
+    id='addCommentModal'
+    tabindex='-1'
+    aria-labelledby='addCommentModalLabel'
+    aria-hidden='true'
+  >
+    <div class='modal-dialog modal-dialog-centered modal-dialog-scrollable'>
+      <div class='modal-content border border-3 border-dark rounded-0'>
+        <div class='modal-header card-header'>
+          <h1 class='modal-title fs-5' id='addCommentModalLabel'>Add Comment</h1>
+          <button
+            type='button'
+            class='btn-close'
+            data-bs-dismiss='modal'
+            aria-label='Close'
+          ></button>
+        </div>
+        <div class='modal-body'>
+          <!-- Create a form to create a new blog -->
+          <form id='add-comment-form'>
+            <div class='mb-3'>
+              <label for='blog-title' class='form-label'>Comment</label>
+              <input
+                type='text'
+                class='form-control'
+                name='comment'
+                id='comment'
+                required
+              />
+              <input
+                type='text'
+                class='form-control d-none hidden'
+                name='blog-id'
+                id='blog-id'
+                value='{{id}}'
+                readonly
+              />
+            </div>
+            <div
+              class='mb-3 d-flex justify-content-space align-items-center w-100'
+            >
+              <button
+                type='submit'
+                id='add-comment-button'
+                class='btn btn-dark'
+              >Submit</button>
+
+              <button
+                type='button'
+                class='btn btn-secondary ms-3'
+                data-bs-dismiss='modal'
+              >Close</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src='/js/blog.js'></script>
