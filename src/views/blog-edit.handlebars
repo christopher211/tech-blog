@@ -1,0 +1,65 @@
+<section class='container mt-5'>
+
+  <div class='border border-3 border-dark my-2'>
+    <div class='card-header'>
+      <h2>
+        Edit Blog
+      </h2>
+    </div>
+
+    <div class='p-3'>
+      <form id='blog-edit-form'>
+        <div class='mb-3'>
+          <label for='edit-blog-title' class='form-label'>Title</label>
+          <input
+            type='text'
+            class='form-control'
+            name='edit-blog-title'
+            id='edit-blog-title'
+            required
+            value='{{title}}'
+          />
+        </div>
+        <div class='mb-3'>
+          <label for='edit-blog-content' class='form-label'>Content</label>
+          <textarea
+            class='form-control'
+            name='edit-blog-content'
+            id='edit-blog-content'
+            rows='3'
+            required
+          >
+            {{content}}
+          </textarea>
+          <input
+            type='text'
+            class='form-control d-none hidden'
+            name='blog-id'
+            id='blog-id'
+            value='{{id}}'
+            readonly
+          />
+        </div>
+        <div class='mb-3 d-flex justify-content-space align-items-center w-100'>
+          <button
+            type='submit'
+            id='submit-edit-blog-button'
+            class='btn btn-sm btn-dark'
+          >Save</button>
+
+          <!-- Cancel button and redirect to dashboard -->
+          <button
+            type='button'
+            class='btn btn-sm btn-secondary ms-3'
+            onclick='window.location.href="/dashboard"'
+          >Cancel</button>
+        </div>
+        <div class='mb-3'>
+          <p id='login-status'></p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script src='/js/edit-blog.js'></script>

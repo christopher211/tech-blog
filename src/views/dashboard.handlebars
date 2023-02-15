@@ -26,25 +26,22 @@
             <ul class='dropdown-menu' aria-labelledby='dropdownMenuButton1'>
               <!-- Create a button that will open a modal to edit the blog -->
               <li>
-                <button
+                <a
                   class='dropdown-item'
                   type='button'
-                  data-bs-toggle='modal'
-                  data-bs-target='#editBlogModal'
+                  href='/blog/{{blog.id}}/edit'
                 >
                   Edit
-                </button>
+                </a>
               </li>
-              <!-- Create a button that will open a modal to delete the blog -->
+              <!-- Create a button that execute a delete route -->
               <li>
                 <button
                   class='dropdown-item'
                   type='button'
-                  data-bs-toggle='modal'
-                  data-bs-target='#deleteBlogModal'
-                >
-                  Delete
-                </button>
+                  data-id='{{blog.id}}'
+                  onclick='deleteBlog({{blog.id}})'
+                >Delete</button>
               </li>
             </ul>
           </div>
@@ -82,68 +79,6 @@
     id='createBlogModal'
     tabindex='-1'
     aria-labelledby='createBlogModalLabel'
-    aria-hidden='true'
-  >
-    <div class='modal-dialog modal-dialog-centered modal-dialog-scrollable'>
-      <div class='modal-content border border-3 border-dark rounded-0'>
-        <div class='modal-header card-header'>
-          <h1 class='modal-title fs-5' id='createBlogModalLabel'>Create new Blog</h1>
-          <button
-            type='button'
-            class='btn-close'
-            data-bs-dismiss='modal'
-            aria-label='Close'
-          ></button>
-        </div>
-        <div class='modal-body'>
-          <!-- Create a form to create a new blog -->
-          <form id='create-blog-form'>
-            <div class='mb-3'>
-              <label for='blog-title' class='form-label'>Title</label>
-              <input
-                type='text'
-                class='form-control'
-                name='blog-title'
-                id='blog-title'
-                required
-              />
-            </div>
-            <div class='mb-3'>
-              <label for='blog-content' class='form-label'>Content</label>
-              <textarea
-                class='form-control'
-                name='blog-content'
-                id='blog-content'
-                rows='3'
-                required
-              ></textarea>
-            </div>
-            <div
-              class='mb-3 d-flex justify-content-space align-items-center w-100'
-            >
-              <button
-                type='submit'
-                id='create-blog-button'
-                class='btn btn-dark'
-              >Create Blog</button>
-
-              <button
-                type='button'
-                class='btn btn-secondary ms-3'
-                data-bs-dismiss='modal'
-              >Close</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div
-    class='modal fade'
-    id='editBlogModal'
-    tabindex='-1'
-    aria-labelledby='editBlogModalLabel'
     aria-hidden='true'
   >
     <div class='modal-dialog modal-dialog-centered modal-dialog-scrollable'>

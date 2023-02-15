@@ -1,14 +1,12 @@
 const createNewBlog = async (event) => {
   event.preventDefault();
 
-  // Collect values from the login form
   const title = document.querySelector('#blog-title').value.trim();
   const content = document.querySelector('#blog-content').value.trim();
 
   console.log('request', title, content);
 
   if (title && content) {
-    // Send a POST request to the API endpoint
     const response = await fetch('/api/blog/create', {
       method: 'POST',
       body: JSON.stringify({ title, content }),
@@ -18,7 +16,21 @@ const createNewBlog = async (event) => {
     console.log('response', response);
 
     if (response.ok) {
-      // If successful, redirect the browser to the profile page
+      document.location.replace('/dashboard');
+    } else {
+      alert(response.statusText);
+    }
+  }
+};
+
+const deleteBlog = async (id) => {
+  if (id) {
+    const response = await fetch(`/api/blog/${id}/delete`, {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+    });
+
+    if (response.ok) {
       document.location.replace('/dashboard');
     } else {
       alert(response.statusText);

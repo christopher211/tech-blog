@@ -61,7 +61,7 @@ blogApi.post('/create', async (req, res) => {
 });
 
 // PUT update a post
-blogApi.put('/:id', async (req, res) => {
+blogApi.put('/:id/update', async (req, res) => {
   try {
     const { title, content } = req.body;
     const blog = await Blog.update(
@@ -83,14 +83,14 @@ blogApi.put('/:id', async (req, res) => {
 });
 
 // DELETE a post
-blogApi.delete('/:id', async (req, res) => {
+blogApi.delete('/:id/delete', async (req, res) => {
   try {
     const blog = await Blog.destroy({
       where: {
         id: req.params.id,
       },
     });
-    res.status(200).json(blog);
+    res.status(200).json({ message: 'Blog deleted' });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

@@ -49,4 +49,16 @@ blogRoutes.post('/create', withAuth, async (req, res) => {
   }
 });
 
+blogRoutes.get('/:id/edit', withAuth, async (req, res) => {
+  // Get blog by id
+  const blogData = await Blog.findByPk(req.params.id);
+
+  // Serialize data so the template can read it
+  const blog = blogData.get({ plain: true });
+
+  console.log(blog);
+
+  res.render('blog-edit', { ...blog, loggedIn: req.session.loggedIn });
+});
+
 export default blogRoutes;
