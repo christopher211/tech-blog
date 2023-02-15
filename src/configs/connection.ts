@@ -6,14 +6,20 @@ import Comment from '~/models/Comment';
 
 dotenv.config();
 
-const sequelize = new Sequelize({
-  database: process.env.DB_NAME,
-  dialect: 'mysql',
-  username: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  host: process.env.DB_HOST,
-  port: Number(process.env.DB_PORT),
-  models: [User, Blog, Comment],
-});
+let sequelize;
+
+if (process.env.JAWSDB_URL) {
+  sequelize = new Sequelize(process.env.JAWSDB_URL);
+} else {
+  sequelize = new Sequelize({
+    database: process.env.DB_NAME,
+    dialect: 'mysql',
+    username: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    host: process.env.DB_HOST,
+    port: Number(process.env.DB_PORT),
+    models: [User, Blog, Comment],
+  });
+}
 
 export default sequelize;
