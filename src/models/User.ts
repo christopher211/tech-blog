@@ -81,7 +81,8 @@ class User extends Model {
 
   // check password
   public async checkPassword(password: string): Promise<boolean> {
-    return bcrypt.compareSync(password, this.password);
+    console.log('password', password);
+    return bcrypt.compare(password, this.password);
   }
 }
 

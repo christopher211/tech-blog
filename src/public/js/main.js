@@ -11,7 +11,7 @@ const signup = async (event) => {
 };
 
 const logout = async () => {
-  const response = await fetch('/api/users/logout', {
+  const response = await fetch('/api/user/logout', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
   });
@@ -32,4 +32,6 @@ if (
   document.querySelector('#signup-button').addEventListener('click', signup);
 }
 
-document.querySelector('#logout-button').addEventListener('click', logout);
+if (document.querySelector('#logout-button')) {
+  document.querySelector('#logout-button').addEventListener('click', logout);
+}

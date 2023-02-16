@@ -38,14 +38,18 @@ userApi.post('/signup', async (req, res) => {
 // POST login
 userApi.post('/login', async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { username, password } = req.body;
+    // Find user by username
     const user = await User.findOne({
       where: {
-        email,
+        username,
       },
     });
 
+    console.log('user', user);
+
     if (!user) {
+      console.log('Goes here');
       res
         .status(400)
         .json({ message: 'Incorrect email or password, please try again' });
@@ -55,6 +59,8 @@ userApi.post('/login', async (req, res) => {
     const validPassword = await user.checkPassword(password);
 
     if (!validPassword) {
+      console.log('Goes here 2');
+
       res
         .status(400)
         .json({ message: 'Incorrect email or password, please try again' });
